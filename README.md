@@ -1,2 +1,0 @@
-# miffe_site
-django
