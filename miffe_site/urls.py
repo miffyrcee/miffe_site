@@ -13,10 +13,12 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+import django_telegrambot
+from django.conf.urls import include, url
 from django.contrib import admin
 from django.urls import path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    url(r'^$', TemplateView.as_view(template_name="index.html")),
+    url('', include('django_telegrambot.urls')),
 ]
