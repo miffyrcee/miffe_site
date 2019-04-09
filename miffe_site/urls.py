@@ -21,5 +21,5 @@ from django_telegrambot.urls import url
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    url('', include('django_telegrambot.urls')),
+    url(r'^', include('django_telegrambot.urls')),
 ]

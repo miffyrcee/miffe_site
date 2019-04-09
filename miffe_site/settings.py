@@ -96,7 +96,7 @@ DJANGO_TELEGRAMBOT = {
 
     'WEBHOOK_SITE': 'https://miffe.site.com',
     # (Optional[str]) # If this value is specified,
-    'WEBHOOK_PREFIX': '/prefix',
+    'WEBHOOK_PREFIX': '',
     # a prefix is added to webhook url
 
     # If your site use self-signed
