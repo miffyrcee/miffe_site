@@ -15,12 +15,11 @@ Including another URLconf
 """
 import django_telegrambot
 from django.conf.urls import url
-from django.contrib import admin as dAdmin
+from django.contrib import admin
 from django.urls import include, path
-from django_telegrambot import admin as tAdmin
 
 urlpatterns = [
-    path('dadmin/', dAdmin.site.urls),
+    path('dadmin/', admin.site.urls),
     url(r'^', include('django_telegrambot.urls')),
     #  path('tadmin/', django_telegrambot.urls),
 ]
