@@ -20,5 +20,6 @@ from django.contrib import admin
 urlpatterns = [
     path('dadmin/', admin.site.urls),
     url(r'^', include('telegrambot.urls')),
+    #  url(r'^', include('telegrambot.urls')),
     #  path('tadmin/', django_telegrambot.urls),
 ]
