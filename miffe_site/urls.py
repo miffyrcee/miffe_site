@@ -18,7 +18,7 @@ from django.conf.urls import include, patterns, url
 from django.contrib import admin
 
 urlpatterns = [
-    path('dadmin/', admin.site.urls),
-    #  url(r'^', include('telegrambot.urls')),
-    #  path('tadmin/', django_telegrambot.urls),
+    path('admin/', admin.site.urls),
+    url(r'^', include('telegrambot.urls')),
+    url(r'admin/django-telegrambot', include('telegrambot.urls.admin')),
 ]
