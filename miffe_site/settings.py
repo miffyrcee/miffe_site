@@ -57,7 +57,7 @@ ROOT_URLCONF = 'miffe_site.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [templates / bot],
+        'DIRS': ['templates/bot'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
