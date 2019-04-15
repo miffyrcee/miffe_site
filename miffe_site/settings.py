@@ -28,6 +28,7 @@ ALLOWED_HOSTS = [
     '.miffe.site',
     '.miffe.site.',
     '127.0.0.1',
+    '172.96.234.105',
 ]
 
 # Application definition
