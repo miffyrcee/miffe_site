@@ -28,6 +28,7 @@ ALLOWED_HOSTS = [
     '.miffe.site.',
     '.miffe.site',
     '127.0.0.1',
+    '172.96.234.105',
 ]
 
 # Application definition
@@ -111,12 +112,12 @@ DJANGO_TELEGRAMBOT = {
     # NB: if use polling you must provide to run
     # a management command that starts a worker
     'WEBHOOK_SITE':
-    '172.96.234.105',
+    'http://172.96.234.105',
     'WEBHOOK_PREFIX':
     '/prefix',  # (Optional[str]) # If this value is specified,
     # a prefix is added to webhook url
     'WEBHOOK_CERTIFICATE':
-    os.path.join(BASE_DIR,'miffe_site.pem'),  # If your site use self-signed
+    os.path.join(BASE_DIR, 'miffe_site.pem'),  # If your site use self-signed
     #certificate, must be set with location of your public key
     #certificate.(More info at https://core.telegram.org/bots/self-signed )
     'STRICT_INIT':
