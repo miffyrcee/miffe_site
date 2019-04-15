@@ -126,7 +126,7 @@ DJANGO_TELEGRAMBOT = {
     # imported.
     'BOTS': [
         {
-            'TOKEN': '786276948:AAEwplAQNpcEF5BtObF4dQ6_gnh7gADjJ4w',
+            'TOKEN': '786276948:AAEwplAQNpcEF5BtObF4dQ6_gnh7gADjJ4w/',
 
             #'ALLOWED_UPDATES':(Optional[list[str]]), # List the types of
             #updates you want your bot to receive. For example, specify
