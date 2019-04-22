@@ -14,11 +14,9 @@ vara = "tempature(C)"
 varb = "humidity(RH%)"
 varc = "concentration(PPM)"
 
-data = formaters.readJson('data.json')
-
 
 def echoString(var):
-    return var + str(data[var])
+    return var + str(formaters.readJson('data.json')[var])
 
 
 @bot.message_handler(commands=['start', 'help'])
