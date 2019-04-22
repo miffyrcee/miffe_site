@@ -13,6 +13,7 @@ import json
 vara = "tempature(C)"
 varb = "humidity(RH%)"
 varc = "concentration(PPM)"
+vard = "vard"
 
 
 def readJson(file_path):
@@ -22,8 +23,8 @@ def readJson(file_path):
         f.close()
 
 
-def writeJson(file_path, a, b, c):
-    data = {vara: a, varb: b, varc: c}
+def writeJson(file_path, a, b, c, d):
+    data = {vara: a, varb: b, varc: c, vard: d}
     with open(file_path, 'w') as f:
         json.dump(data, f)
         f.close()

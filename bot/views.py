@@ -11,6 +11,6 @@ def add(request):
     a = request.GET['a']
     b = request.GET['b']
     c = request.GET['c']
-    d = float(a) + float(b)
-    formaters.writeJson('data.json', float(a), float(b), float(c))
+    d = readJson('data.json')["vard"]
+    formaters.writeJson('data.json', float(a), float(b), float(c), float(d))
     return HttpResponse(str(d))
