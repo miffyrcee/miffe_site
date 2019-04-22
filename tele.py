@@ -7,6 +7,7 @@
 # Distributed under terms of the MIT license.
 import formaters
 import telebot
+from telebot import types
 
 bot = telebot.TeleBot("786276948:AAEwplAQNpcEF5BtObF4dQ6_gnh7gADjJ4w")
 
@@ -29,4 +30,11 @@ def send_welcome(message):
 @bot.message_handler(func=lambda message: True)
 def echo_all(message):
     bot.reply_to(message, message.text)
+
+
 bot.polling()
+markup = types.ReplyKeyboardMarkup(row_width=2)
+itembtn1 = types.KeyboardButton('open')
+itembtn2 = types.KeyboardButton('close')
+markup.add(itembtn1, itembtn2)
+tb.send_message(chat_id, "Choose the open or close", reply_markup=markup)
