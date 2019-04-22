@@ -1,18 +1,16 @@
+import json
+
+import formaters
+# Create your views here.
+from bot import views as bv
 from django.http import HttpResponse
 from django.shortcuts import render
-
-from bot import views as bv
-
-# Create your views here.
-
-import json
 
 
 def add(request):
     a = request.GET['a']
     b = request.GET['b']
     c = request.GET['c']
-    d = int(a)+int(b)
-    #  with f.open()
-
+    d = float(a) + float(b)
+    formaters.writeJson('data.json', float(a), float(b), float(c))
     return HttpResponse(str(d))
