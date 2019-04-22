@@ -18,7 +18,7 @@ data = formaters.readJson('data.json')
 
 
 def echoString(var):
-    return var + data[var]
+    return str(var + data[var])
 
 
 @bot.message_handler(commands=['start', 'help'])
