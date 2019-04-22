@@ -20,6 +20,10 @@ def echoString(var):
     return var + str(formaters.readJson('data.json')[var])
 
 
+def echoParmers(var):
+    return str(formaters.readJson('data.json')[var])
+
+
 @bot.message_handler(commands=['start', 'help'])
 def send_welcome(message):
     bot.reply_to(
@@ -29,7 +33,12 @@ def send_welcome(message):
 
 @bot.message_handler(func=lambda message: True)
 def echo_all(message):
-    bot.reply_to(message, message.text)
+    if (message == "open"):
+        formaters.writeJson('data.json', echoParmers(vara), echoParmers(varb),echoParmers(varc), "1")
+    else if(message == "close"):
+        formaters.writeJson('data.json', echoParmers(vara), echoParmers(varb),echoParmers(varc), "0")
+    else:
+        bot.reply_to(message, message.text)
 
 
 bot.polling()
