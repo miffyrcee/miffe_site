@@ -10,10 +10,22 @@ import telebot
 
 bot = telebot.TeleBot("786276948:AAEwplAQNpcEF5BtObF4dQ6_gnh7gADjJ4w")
 
+vara = "tempature(C)"
+varb = "humidity(RH%)"
+varc = "concentration(PPM)"
+
+data = formaters.readJson('data.json')
+
+
+def echoString(var):
+    return var + data[var]
+
 
 @bot.message_handler(commands=['start', 'help'])
 def send_welcome(message):
-    bot.reply_to(message, {"te": 35, "sd": 23})
+    bot.reply_to(
+        message,
+        echoString(vara) + '\n' + echoString(varb) + '\n' + echoString(varc))
 
 
 @bot.message_handler(func=lambda message: True)
