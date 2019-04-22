@@ -41,3 +41,5 @@ def echo_all(message):
                             echoParmers(varc), "0")
     else:
         bot.reply_to(message, message.text)
+
+bot.polling()
