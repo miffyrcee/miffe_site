@@ -33,7 +33,7 @@ def send_welcome(message):
 
 @bot.message_handler(func=lambda message: True)
 def echo_all(message):
-    if (message == "open"):
+    if (message.text == "open"):
         formaters.writeJson('data.json', echoParmers(vara), echoParmers(varb),
                             echoParmers(varc), "1")
     elif (message == "close"):
@@ -41,5 +41,4 @@ def echo_all(message):
                             echoParmers(varc), "0")
     else:
         bot.reply_to(message, message.text)
-
 bot.polling()
