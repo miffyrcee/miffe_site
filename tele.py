@@ -5,10 +5,6 @@
 # Copyright © 2019 miffyrcee <miffyrcee@localhost.localdomain>
 #
 # Distributed under terms of the MIT license.
-import os
-from datetime import datetime
-
-import apscheduler
 import formaters
 import telebot
 from telebot import types
@@ -40,11 +36,9 @@ def echo_all(message):
     if (message.text == "open"):
         formaters.writeJson('data.json', echoParmers(vara), echoParmers(varb),
                             echoParmers(varc), "1")
-    elif (message == "closed"):
+    elif (message == "close"):
         formaters.writeJson('data.json', echoParmers(vara), echoParmers(varb),
                             echoParmers(varc), "0")
     else:
         bot.reply_to(message, message.text)
-
-
 bot.polling()
