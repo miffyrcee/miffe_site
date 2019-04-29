@@ -20,9 +20,8 @@ vara = "tempature(C)"
 varb = "humidity(RH%)"
 varc = "concentration(PPM)"
 
-
 scheduler = BlockingScheduler()
-    scheduler.add_job(tick, 'interval', seconds=3)
+scheduler.add_job(tick, 'interval', seconds=3)
 
 
 def tick():
@@ -58,5 +57,4 @@ def echo_all(message):
                             echoParmers(varc), "0")
     else:
         bot.reply_to(message, message.text)
-
 bot.polling()
