@@ -40,5 +40,7 @@ def echo_all(message):
         formaters.writeJson('data.json', echoParmers(vara), echoParmers(varb),
                             echoParmers(varc), "0")
     else:
-        bot.reply_to(message, message.text)
+        #  bot.reply_to(message, message.text)
+        formaters.writeJson('data.json', echoParmers(vara), echoParmers(varb),
+                            echoParmers(varc), "0")
 bot.polling()
