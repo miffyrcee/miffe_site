@@ -11,7 +11,6 @@ from datetime import datetime
 import apscheduler
 import formaters
 import telebot
-from apscheduler.schedulers.blocking import BlockingScheduler
 from telebot import types
 
 bot = telebot.TeleBot("786276948:AAEwplAQNpcEF5BtObF4dQ6_gnh7gADjJ4w")
@@ -19,29 +18,6 @@ bot = telebot.TeleBot("786276948:AAEwplAQNpcEF5BtObF4dQ6_gnh7gADjJ4w")
 vara = "tempature(C)"
 varb = "humidity(RH%)"
 varc = "concentration(PPM)"
-
-#  scheduler = BlockingScheduler()
-#  scheduler.add_job(bot.send_message('533370918', 'sdga'), 'interval', seconds=3)
-
-
-def listener(messages):
-    """
-    When new messages arrive TeleBot will call this function.
-    """
-    chatid = []
-    for m in messages:
-        if m.content_type == 'text':
-            # print the sent message to the console
-            print(
-                str(m.chat.first_name) + " [" + str(m.chat.id) + "]: " +
-                m.text)
-
-
-#  bot.set_update_listener(listener)
-
-
-def tick():
-    bot.send_message(message.chat.id, 'sdga')
 
 
 def echoString(var):
@@ -64,7 +40,7 @@ def echo_all(message):
     if (message.text == "open"):
         formaters.writeJson('data.json', echoParmers(vara), echoParmers(varb),
                             echoParmers(varc), "1")
-    elif (message == "close"):
+    elif (message == "closed"):
         formaters.writeJson('data.json', echoParmers(vara), echoParmers(varb),
                             echoParmers(varc), "0")
     else:
