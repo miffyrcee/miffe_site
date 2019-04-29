@@ -33,14 +33,14 @@ def send_welcome(message):
 
 @bot.message_handler(func=lambda message: True)
 def echo_all(message):
-    if (message.text == "opend"):
+    if (message.text == "open"):
         formaters.writeJson('data.json', echoParmers(vara), echoParmers(varb),
                             echoParmers(varc), "1")
-    elif (message == "close"):
+    elif (message.text == "close"):
         formaters.writeJson('data.json', echoParmers(vara), echoParmers(varb),
                             echoParmers(varc), "0")
     else:
-        #  bot.reply_to(message, message.text)
-        formaters.writeJson('data.json', echoParmers(vara), echoParmers(varb),
-                            echoParmers(varc), "0")
+        bot.reply_to(message, message.text)
+        #  formaters.writeJson('data.json', echoParmers(vara), echoParmers(varb),
+        #  echoParmers(varc), "0")
 bot.polling()
