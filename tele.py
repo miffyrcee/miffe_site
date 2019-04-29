@@ -5,8 +5,13 @@
 # Copyright © 2019 miffyrcee <miffyrcee@localhost.localdomain>
 #
 # Distributed under terms of the MIT license.
+import os
+from datetime import datetime
+
+import apscheduler
 import formaters
 import telebot
+from apscheduler.schedulers.blocking import BlockingScheduler
 from telebot import types
 
 bot = telebot.TeleBot("786276948:AAEwplAQNpcEF5BtObF4dQ6_gnh7gADjJ4w")
@@ -14,6 +19,18 @@ bot = telebot.TeleBot("786276948:AAEwplAQNpcEF5BtObF4dQ6_gnh7gADjJ4w")
 vara = "tempature(C)"
 varb = "humidity(RH%)"
 varc = "concentration(PPM)"
+
+
+scheduler = BlockingScheduler()
+    scheduler.add_job(tick, 'interval', seconds=3)
+
+
+def tick():
+    bot.send_message(message.chat.id, tick())
+
+
+def tick():
+    print('Tick! The time is: %s' % datetime.now())
 
 
 def echoString(var):
@@ -41,4 +58,5 @@ def echo_all(message):
                             echoParmers(varc), "0")
     else:
         bot.reply_to(message, message.text)
+
 bot.polling()
