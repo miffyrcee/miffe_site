@@ -21,7 +21,7 @@ varb = "humidity(RH%)"
 varc = "concentration(PPM)"
 
 scheduler = BlockingScheduler()
-scheduler.add_job(bot.send_message(message.chat.id, 'sdga'),
+scheduler.add_job(bot.send_message(bot.get_me().chat_id, 'sdga'),
                   'interval',
                   seconds=3)
 
@@ -55,5 +55,4 @@ def echo_all(message):
                             echoParmers(varc), "0")
     else:
         bot.reply_to(message, message.text)
-
 bot.polling()
