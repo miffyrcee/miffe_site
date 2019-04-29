@@ -37,7 +37,7 @@ def listener(messages):
                 m.text)
 
 
-bot.set_update_listener(listener)
+#  bot.set_update_listener(listener)
 
 
 def tick():
