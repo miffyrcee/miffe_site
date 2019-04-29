@@ -21,9 +21,26 @@ varb = "humidity(RH%)"
 varc = "concentration(PPM)"
 
 scheduler = BlockingScheduler()
-scheduler.add_job(bot.send_message(bot.get_me().chat_id, 'sdga'),
-                  'interval',
-                  seconds=3)
+#  scheduler.add_job(bot.send_message(bot.get_me().chat_id, 'sdga'),
+#  'interval',
+#  seconds=3)
+
+
+def listener(messages):
+    """
+    When new messages arrive TeleBot will call this function.
+    """
+    chatid = []
+    for m in messages:
+        if m.content_type == 'text':
+            # print the sent message to the console
+            print(
+                str(m.chat.first_name) + " [" + str(m.chat.id) + "]: " +
+                m.text)
+            return chatid.append(m.chatid)
+
+
+bot.set_update_listener(listener)
 
 
 def tick():
