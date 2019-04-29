@@ -25,11 +25,7 @@ scheduler.add_job(tick, 'interval', seconds=3)
 
 
 def tick():
-    bot.send_message(message.chat.id, tick())
-
-
-def tick():
-    print('Tick! The time is: %s' % datetime.now())
+    bot.send_message(message.chat.id, 'sdga')
 
 
 def echoString(var):
