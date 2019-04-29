@@ -33,7 +33,7 @@ def send_welcome(message):
 
 @bot.message_handler(func=lambda message: True)
 def echo_all(message):
-    if (message.text == "open"):
+    if (message.text == "opend"):
         formaters.writeJson('data.json', echoParmers(vara), echoParmers(varb),
                             echoParmers(varc), "1")
     elif (message == "close"):
