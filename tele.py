@@ -20,8 +20,8 @@ vara = "tempature(C)"
 varb = "humidity(RH%)"
 varc = "concentration(PPM)"
 
-scheduler = BlockingScheduler()
-scheduler.add_job(bot.send_message('533370918', 'sdga'), 'interval', seconds=3)
+#  scheduler = BlockingScheduler()
+#  scheduler.add_job(bot.send_message('533370918', 'sdga'), 'interval', seconds=3)
 
 
 def listener(messages):
