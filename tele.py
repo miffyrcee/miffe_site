@@ -37,7 +37,6 @@ def listener(messages):
             print(
                 str(m.chat.first_name) + " [" + str(m.chat.id) + "]: " +
                 m.text)
-            return chatid.append(m.chatid)
 
 
 bot.set_update_listener(listener)
@@ -72,4 +71,5 @@ def echo_all(message):
                             echoParmers(varc), "0")
     else:
         bot.reply_to(message, message.text)
+
 bot.polling()
