@@ -23,8 +23,8 @@ def readJson(file_path):
         f.close()
 
 
-def writeJson(file_path, a, b, c, d):
-    data = {vara: a, varb: b, varc: c, vard: d}
-    with open(file_path, 'w') as f:
-        json.dump(data, f)
+def writeJson(*args, **kwargs):
+    data = json.dumps(kwargs)
+    with open(args[0], 'w') as f:
+        f.write(json.dumps(kwargs))
         f.close()
