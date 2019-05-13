@@ -6,6 +6,7 @@
 #
 # Distributed under terms of the MIT license.
 import formaters
+import redis
 import telebot
 from telebot import types
 
@@ -14,6 +15,13 @@ bot = telebot.TeleBot("786276948:AAEwplAQNpcEF5BtObF4dQ6_gnh7gADjJ4w")
 vara = "tempature(C)"
 varb = "humidity(RH%)"
 varc = "concentration(PPM)"
+
+pool = redis.ConnectionPool(host='localhost',
+                            port=6379,
+                            db=0,
+                            password='foobared')
+
+r = redis.Redis(connection_pool=pool)
 
 
 def echoString(var):
@@ -43,4 +51,11 @@ def echo_all(message):
         bot.reply_to(message, message.text)
         #  formaters.writeJson('data.json', echoParmers(vara), echoParmers(varb),
         #  echoParmers(varc), "0")
+
+
+@bot.message_handler(commands=['me'])
+def send_welcome(message):
+    bot.reply_to(
+        message,
+        温度+r.get('温度')+ '\n' + 湿度 +r.get('湿度')+ '\n'  ))
 bot.polling()
