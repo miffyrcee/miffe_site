@@ -41,7 +41,7 @@ def compute(a, b, c, d):
 
 
 def standrad(key, value, standardLine):
-    _value = r.get(str(key))
+    _value = float(r.get(str(key)))
     if (value - _value):
         return standrad * 1.1
     else:

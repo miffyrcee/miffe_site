@@ -46,5 +46,4 @@ def _check(message):
         str(float(r.get('concentration'))) + '\n' + '火光强度:' +
         str(float(r.get('brightness'))))
 
-
 bot.polling()
