@@ -19,7 +19,7 @@ def add(request):
     c = request.GET['c']
     d = request.GET['d']
     compute(a, b, c, d)
-    return HttpResponse(int(r.get(payload)))
+    return HttpResponse(int(r.get('payload')))
 
 
 def compute(a, b, c, d):
