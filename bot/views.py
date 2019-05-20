@@ -23,6 +23,7 @@ def add(request):
 
 
 def compute(a, b, c, d):
+
     if (a > standrad('temperature', a, 50)) or (b < hStandrad(
             'humidity', b, 10)) or (c > standrad('concentration', c, 500)) or (
                 d > standrad('brightness', d, 700)):
@@ -41,16 +42,16 @@ def compute(a, b, c, d):
 
 
 def standrad(key, value, standardLine):
-    _value = float(r.get(str(key)))
-    if (value - _value):
+    _value = r.get(str(key))
+    if (value - float(_value) > 0):
         return standrad * 1.1
     else:
         return standrad * 0.9
 
 
 def hStandrad(key, value, standardLine):
-    _value = r.get('bs', str(key))
-    if (value - _value):
+    _value = r.get(str(key))
+    if (value > float(_value)):
         return standrad * 0.9
     else:
         return standrad * 1.1

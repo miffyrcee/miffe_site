@@ -21,9 +21,10 @@ r = redis.Redis(connection_pool=pool)
 @bot.message_handler(commands=['init'])
 def _init(message):
     for i in [
-            'payload', 'tempature', 'humidity', 'concentration', 'brightness'
+            'payload', 'temperature', 'humidity', 'concentration', 'brightness'
     ]:
         r.set(i, 0)
+    bot.reply_to(message, '初始化完成')
 
 
 @bot.message_handler(commands=['open'])
@@ -41,9 +42,11 @@ def _close(message):
 @bot.message_handler(commands=['check'])
 def _check(message):
     bot.reply_to(
-        message, '温度:' + str(float(r.get('tempature'))) + '\n' + '湿度:' +
+        message, '温度:' + str(float(r.get('temperature'))) + '\n' + '湿度:' +
         str(float(r.get('humidity'))) + '\n' + 'co浓度:' +
         str(float(r.get('concentration'))) + '\n' + '火光强度:' +
-        str(float(r.get('brightness'))))
+        str(float(r.get('brightness'))) + '\n' + 'payload:' +
+        str(float(r.get('payload'))))
+
 
 bot.polling()
