@@ -24,9 +24,10 @@ def add(request):
 
 def compute(a, b, c, d):
 
-    if (a > standrad('temperature', a, 50)) or (b < hStandrad(
-            'humidity', b, 10)) or (c > standrad('concentration', c, 500)) or (
-                d > standrad('brightness', d, 700)):
+    if (float(a) > standrad('temperature', a, 50)) or (float(b) < hStandrad(
+            'humidity', b, 10)) or (float(c) > standrad(
+                'concentration', c, 500)) or (float(d) > standrad(
+                    'brightness', d, 700)):
         r.set('payload', 1)
     else:
         r.set('payload', 0)
