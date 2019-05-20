@@ -1,14 +1,11 @@
 import re
 
-import formaters
-import pymysql
 import redis
 import telebot
 # Create your views here.
 from bot import views as bv
 from django.http import HttpResponse
 from django.shortcuts import render
-from telebot import types
 
 bot = telebot.TeleBot('862223389:AAGA76iwm7ZgdBKCHvOUnu2gjL2rwYfVYXA')
 pool = redis.ConnectionPool(host='149.129.115.88',
