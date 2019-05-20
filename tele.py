@@ -30,13 +30,13 @@ def _init(message):
 @bot.message_handler(commands=['open'])
 def _open(message):
     r.set('payload', 1)
-    bot.reply_to(message, 'payload == 1')
+    bot.reply_to(message, 'payload == 1,已启动')
 
 
 @bot.message_handler(commands=['close'])
 def _close(message):
     r.set('payload', 0)
-    bot.reply_to(message, 'payload == 0')
+    bot.reply_to(message, 'payload == 0,已关闭')
 
 
 @bot.message_handler(commands=['check'])
@@ -46,7 +46,14 @@ def _check(message):
         str(float(r.get('humidity'))) + '\n' + 'co浓度:' +
         str(float(r.get('concentration'))) + '\n' + '火光强度:' +
         str(float(r.get('brightness'))) + '\n' + 'payload:' +
-        str(float(r.get('payload'))))
+        str(int(r.get('payload'))))
 
 
+@bot.message_handler(commands=['monitor'])
+def _monior(message):
+    bot.send_message(message.chat.id, '监控已开启')
+    r.hset('tg', 'chat_id', message.chat.id)
+    while (1):
+        if (int(r.get('payload'))):
+            bot.send_message(int(r.hget('tg', 'chat_id')), '警告！！！')
 bot.polling()
