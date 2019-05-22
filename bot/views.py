@@ -27,7 +27,7 @@ def compute(a, b, c, d):
         if (float(a) > standrad('temperature', a, 50)) or (
                 float(b) < hStandrad('humidity', b, 10)) or (
                     float(c) > standrad('concentration', c, 500)) or (int(
-                        r.get('brightness')) == 1):
+                        r.get('brightness')) == 0):
             r.set('payload', 1)
         else:
             r.set('payload', 0)
