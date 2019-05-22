@@ -18,41 +18,7 @@ def add(request):
     b = request.GET['b']
     c = request.GET['c']
     d = request.GET['d']
-    compute(a, b, c, d)
-    return HttpResponse(int(r.get('payload')))
-
-
-def compute(a, b, c, d):
-    if int(r.get('npayload')) == 0:
-        if float(a) > float(r.get('temperature')) and float(a) > 55:
-            _payload = 1
-        elif float(a) < float(r.get('temperature')) and float(a) > 45:
-            _payload = 1
-        elif float(a) == float(r.get('temperature')) and int(r.get('payload')):
-            _payload = 1
-        else:
-            if float(b) > float(r.get('humidity')) and float(b) < 9:
-                _payload = 1
-            elif float(b) < float(r.get('humidity')) and float(a) < 11:
-                _payload = 1
-            elif float(a) == float(r.get('humidity')) and int(
-                    r.get('payload')):
-                _payload = 1
-            else:
-                if float(c) > float(r.get('concentration')) and float(b) > 550:
-                    _payload = 1
-                elif float(b) < float(
-                        r.get('concentration')) and float(a) > 450:
-                    _payload = 1
-                elif float(a) == float(r.get('concentration')) and int(
-                        r.get('payload')):
-                    _payload = 1
-                else:
-                    r.set('payload', 0)
-
-    else:
-        r.set('payload', 1)
-
+    return HttpResponse(compute(a, b, c, d))
     _dict = {
         'temperature': a,
         'humidity': b,
@@ -61,3 +27,57 @@ def compute(a, b, c, d):
     }
     for i, j in _dict.items():
         r.set(i, j)
+
+
+def compute(a, b, c, d):
+    if int(r.get('npayload')) == 0:
+        _payload = int(r.get('payload'))
+        if standard('a', a, _payload) or standard(
+                'b', b, _payload) or standard('c', b, _payload) or int(d) == 0:
+            return 1
+        else:
+            return 0
+    else:
+        return 1
+
+
+def standard(key, value, _payload):
+    if key == 'a':
+        if float(value) > float(r.get('temperature')):
+            if float(value) > 55:
+                return 1
+            else:
+                return 0
+        elif float(value) < float(r.get('temperature')):
+            if float(value) > 45:
+                return 1
+            else:
+                return 0
+        else:
+            return _payload
+    if key == 'b':
+        if float(value) > float(r.get('humidity')):
+            if float(value) < 9:
+                return 1
+            else:
+                return 0
+        elif float(value) < float(r.get('humidity')):
+            if float(value) < 11:
+                return 1
+            else:
+                return 0
+        else:
+            return _payload
+    if key == 'c':
+        if float(value) > float(r.get('concentration')):
+            if float(value) > 550:
+                return 1
+            else:
+                return 0
+        elif float(value) < float(r.get('concentration')):
+            if float(value) > 450:
+                return 1
+            else:
+                return 0
+        else:
+            return _payload
