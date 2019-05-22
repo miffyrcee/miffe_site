@@ -1,7 +1,6 @@
 import re
 
 import redis
-
 # Create your views here.
 from bot import views as bv
 from django.http import HttpResponse
@@ -25,7 +24,6 @@ def add(request):
 
 def compute(a, b, c, d):
     if (int(r.get('payload')) != 1):
-
         if (float(a) > standrad('temperature', a, 50)) or (
                 float(b) < hStandrad('humidity', b, 10)) or (
                     float(c) > standrad('concentration', c, 500)) or (
