@@ -23,27 +23,33 @@ def add(request):
 
 
 def compute(a, b, c, d):
-    if (int(r.get('npayload')) == 0):
-        if (float(a) != r.get('temperature')):
-            if (float(a) > standrad('temperature', a, 50)):
-                _payload = 1
-            else:
-                _payload = 0
-        if (float(b) != r.get('humidity')):
-            if (float(b) < standrad('humidity', b, 10)):
-                _payload = 1
-            else:
-                _payload = 0
-        if (float(c) != r.get('concentration')):
-            if (float(c) > standrad('concentration', c, 500)):
-                _payload = 1
-            else:
-                _payload = 0
-        if (int(r.get('brightness')) == 0):
+    if int(r.get('npayload')) == 0:
+        if float(a) > float(r.get('temperature')) and float(a) > 55:
+            _payload = 1
+        elif float(a) < float(r.get('temperature')) and float(a) > 45:
+            _payload = 1
+        elif float(a) == float(r.get('temperature')) and int(r.get('payload')):
             _payload = 1
         else:
-            _payload = 0
-        r.set('payload', _payload)
+            if float(b) > float(r.get('humidity')) and float(b) < 9:
+                _payload = 1
+            elif float(b) < float(r.get('humidity')) and float(a) < 11:
+                _payload = 1
+            elif float(a) == float(r.get('humidity')) and int(
+                    r.get('payload')):
+                _payload = 1
+            else:
+                if float(c) > float(r.get('concentration')) and float(b) > 550:
+                    _payload = 1
+                elif float(b) < float(
+                        r.get('concentration')) and float(a) > 450:
+                    _payload = 1
+                elif float(a) == float(r.get('concentration')) and int(
+                        r.get('payload')):
+                    _payload = 1
+                else:
+                    r.set('payload', 0)
+
     else:
         r.set('payload', 1)
 
@@ -55,19 +61,3 @@ def compute(a, b, c, d):
     }
     for i, j in _dict.items():
         r.set(i, j)
-
-
-def standrad(key, value, standardLine):
-    _value = r.get(str(key))
-    if (float(value) - float(_value) > 0):
-        return standardLine * 1.1
-    else:
-        return standardLine * 0.9
-
-
-def hStandrad(key, value, standardLine):
-    _value = r.get(str(key))
-    if (float(value) > float(_value)):
-        return standardLine * 0.9
-    else:
-        return standardLine * 1.1
