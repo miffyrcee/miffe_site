@@ -21,7 +21,8 @@ r = redis.Redis(connection_pool=pool)
 @bot.message_handler(commands=['init'])
 def _init(message):
     for i in [
-            'payload', 'temperature', 'humidity', 'concentration', 'brightness'
+            'npayload', 'temperature', 'humidity', 'concentration',
+            'brightness', 'payload'
     ]:
         r.set(i, 0)
     bot.reply_to(message, '初始化完成')
@@ -29,14 +30,14 @@ def _init(message):
 
 @bot.message_handler(commands=['open'])
 def _open(message):
-    r.set('payload', 1)
-    bot.reply_to(message, 'payload == 1,已启动')
+    r.set('npayload', 1)
+    bot.reply_to(message, 'npayload == 1,已启动')
 
 
 @bot.message_handler(commands=['close'])
 def _close(message):
-    r.set('payload', 0)
-    bot.reply_to(message, 'payload == 0,已关闭')
+    r.set('npayload', 0)
+    bot.reply_to(message, 'npayload == 0,已关闭')
 
 
 @bot.message_handler(commands=['check'])
@@ -45,15 +46,17 @@ def _check(message):
         message, '温度:' + str(float(r.get('temperature'))) + '\n' + '湿度:' +
         str(float(r.get('humidity'))) + '\n' + 'co浓度:' +
         str(float(r.get('concentration'))) + '\n' + '火光强度:' +
-        str(float(r.get('brightness'))) + '\n' + 'payload:' +
+        str(float(r.get('brightness'))) + '\n' + 'npayload:' +
+        str(int(r.get('npayload'))) + '\n' + 'payload:' +
         str(int(r.get('payload'))))
 
 
 @bot.message_handler(commands=['monitor'])
 def _monior(message):
     bot.send_message(message.chat.id, '监控已开启')
-    r.hset('tg', 'chat_id', message.chat.id)
-    while (1):
+    for i in range(0, 3):
         if (int(r.get('payload'))):
-            bot.send_message(int(r.hget('tg', 'chat_id')), '警告！！！')
+            bot.send_message(message.chat.id, '警告！！！')
+
+
 bot.polling()
