@@ -24,14 +24,26 @@ def add(request):
 
 def compute(a, b, c, d):
     if (int(r.get('npayload')) == 0):
-        if (float(a) > standrad('temperature', a, 50)) or (
-                float(b) < hStandrad('humidity', b, 10)) or (
-                    float(c) > standrad('concentration', c, 500)) or (int(
-                        r.get('brightness')) == 0):
-            r.set('payload', 1)
+        if (float(a) != r.get('temperature')):
+            if (float(a) > standrad('temperature', a, 50)):
+                _payload = 1
+            else:
+                _payload = 0
+        if (float(b) != r.get('humidity')):
+            if (float(b) < standrad('humidity', b, 10)):
+                _payload = 1
+            else:
+                _payload = 0
+        if (float(c) != r.get('concentration')):
+            if (float(c) > standrad('concentration', c, 500)):
+                _payload = 1
+            else:
+                _payload = 0
+        if (int(r.get('brightness')) == 0):
+            _payload = 1
         else:
-            r.set('payload', 0)
-
+            _payload = 0
+        r.set('payload', _payload)
     else:
         r.set('payload', 1)
 
