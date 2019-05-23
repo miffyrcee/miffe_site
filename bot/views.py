@@ -19,6 +19,18 @@ def add(request):
     c = float(request.GET['c'])
     d = int(request.GET['d'])
     return HttpResponse(compute(a, b, c, d))
+
+
+def compute(a, b, c, d):
+    if int(r.get('npayload')) == 0:
+        _payload = int(r.get('payload'))
+        if standard('a', a, _payload) or standard(
+                'b', b, _payload) or standard('c', c, _payload) or d == 0:
+            return 1
+        else:
+            return 0
+    else:
+        return 1
     _dict = {
         'temperature': a,
         'humidity': b,
@@ -27,18 +39,6 @@ def add(request):
     }
     for i, j in _dict.items():
         r.set(i, j)
-
-
-def compute(a, b, c, d):
-    if int(r.get('npayload')) == 0:
-        _payload = int(r.get('payload'))
-        if standard('a', a, _payload) or standard(
-                'b', b, _payload) or standard('c', c, _payload) or int(d) == 0:
-            return 1
-        else:
-            return 0
-    else:
-        return 1
 
 
 def standard(key, value, _payload):
