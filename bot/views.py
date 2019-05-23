@@ -18,7 +18,7 @@ def add(request):
     b = float(request.GET['b'])
     c = float(request.GET['c'])
     d = int(request.GET['d'])
-    _payload = compute(a, b, c, d))
+    _payload = compute(a, b, c, d)
     _dict = {
         'temperature': a,
         'humidity': b,
@@ -28,6 +28,8 @@ def add(request):
     for i, j in _dict.items():
         r.set(i, j)
     return HttpResponse(_payload)
+
+
 def compute(a, b, c, d):
     if int(r.get('npayload')) == 0:
         _payload = int(r.get('payload'))
