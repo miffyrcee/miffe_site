@@ -14,10 +14,10 @@ r = redis.Redis(connection_pool=pool)
 
 
 def add(request):
-    a = request.GET['a']
-    b = request.GET['b']
-    c = request.GET['c']
-    d = request.GET['d']
+    a = float(request.GET['a'])
+    b = float(request.GET['b'])
+    c = float(request.GET['c'])
+    d = int(request.GET['d'])
     return HttpResponse(compute(a, b, c, d))
     _dict = {
         'temperature': a,
@@ -33,7 +33,7 @@ def compute(a, b, c, d):
     if int(r.get('npayload')) == 0:
         _payload = int(r.get('payload'))
         if standard('a', a, _payload) or standard(
-                'b', b, _payload) or standard('c', b, _payload) or int(d) == 0:
+                'b', b, _payload) or standard('c', c, _payload) or int(d) == 0:
             return 1
         else:
             return 0
