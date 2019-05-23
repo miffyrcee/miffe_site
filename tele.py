@@ -45,7 +45,7 @@ def _check(message):
     bot.reply_to(
         message, '温度:' + str(float(r.get('temperature'))) + '\n' + '湿度:' +
         str(float(r.get('humidity'))) + '\n' + 'co浓度:' +
-        str(float(r.get('concentration'))) + '\n' + '火光强度:' +
+        str(float(r.get('concentration'))) + '\n' + '火光触发:' +
         str(float(r.get('brightness'))) + '\n' + 'npayload:' +
         str(int(r.get('npayload'))) + '\n' + 'payload:' +
         str(int(r.get('payload'))))
@@ -56,7 +56,7 @@ def _monior(message):
     bot.send_message(message.chat.id, '监控已开启')
     for i in range(0, 3):
         if (int(r.get('payload'))):
-            bot.send_message(message.chat.id, '警告！！！')
+            bot.send_message(533370918, '警告！！！')
 
 
 bot.polling()
